@@ -11,6 +11,13 @@ router.get('/', async (req, res) => {
     const allProducts = await Product.findAll({
       include: [{ model: Category }, { model: Tag }]
     });
+
+    // Set price value to always 2 decimal places
+    allProducts.forEach(item => {
+      item.dataValues.price = item.dataValues.price.toFixed(2);
+    });
+    console.info(allProducts);
+
     res.status(200).json(allProducts);
   } catch (err) {
     res.status(500).json(err);
@@ -33,6 +40,9 @@ router.get('/:id', async (req, res) => {
       });
       return;
     }
+
+    // Set price value to always 2 decimal places
+    getProduct.dataValues.price = getProduct.dataValues.price.toFixed(2);
 
     res.status(200).json(getProduct);
   } catch (err) {
