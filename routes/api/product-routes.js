@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
     allProducts.forEach(item => {
       item.dataValues.price = item.dataValues.price.toFixed(2);
     });
-    console.info(allProducts);
 
     res.status(200).json(allProducts);
   } catch (err) {
