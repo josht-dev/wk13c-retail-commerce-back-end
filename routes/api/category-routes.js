@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Products
   try {
     const allCategories = await Category.findAll({
-      include: [{ model: Product, through: ProductTag}]
+      include: [{ model: Product }]
     });
 
     // Set price value to always 2 decimal places
