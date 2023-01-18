@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Product } = require('../../models');
+const { Category, Product, ProductTag } = require('../../models');
 
 // The `/api/categories` endpoint
 
@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Products
   try {
     const allCategories = await Category.findAll({
-      include: [{ model: Product}]
+      include: [{ model: Product, through: ProductTag}]
     });
 
     // Set price value to always 2 decimal places
