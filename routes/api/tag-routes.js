@@ -8,23 +8,50 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const allTags = await Tag.findAll({
-      include: [{ model: Product, through: ProductTag}]
+      include: [{ model: Product }]
 
     });
 
     // Set price value to always 2 decimal places
+    allTags.forEach(tag => {
+      tag.dataValues.products.forEach(item => {
+        item.dataValues.price = item.dataValues.price.toFixed(2);
+      });
+    });
    
 
     res.status(200).json(allTags);
   } catch (err) {
-    console.info(err);
     res.status(500).json(err);
   }
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // find a single tag by its `id`
   // be sure to include its associated Product data
+  try {
+    const getTag = await Tag.findByPk(req.params.id, {
+      include: [{ model: Product }]
+    });
+
+    // Check for data
+    if (!getTag) {
+      res.status(404).json({ 
+        message: `Tag not found with ID: ${req.params.id}` 
+      });
+      return;
+    }
+
+    // Set price value to always 2 decimal places
+    getTag.dataValues.products.forEach(item => {
+      item.dataValues.price = item.dataValues.price.toFixed(2);
+    });
+
+
+    res.status(200).json(getTag);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.post('/', (req, res) => {
