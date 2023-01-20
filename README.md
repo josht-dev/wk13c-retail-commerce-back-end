@@ -1,9 +1,9 @@
 # wk13c-retail-commerce-back-end
 
-![GitHub](https://img.shields.io/github/license/josht-dev/wk12c-employee-tracker?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/josht-dev/wk13c-retail-commerce-back-end?style=for-the-badge)
 ![node-lts](https://img.shields.io/badge/node-16.18.0-brightgreen?style=for-the-badge)
 [![npm version](https://img.shields.io/badge/express-4.16.4-brightgreen?style=for-the-badge)](https://badge.fury.io/js/express)
-![GitHub issues](https://img.shields.io/github/issues/josht-dev/wk11c-my-notes?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/josht-dev/wk13c-retail-commerce-back-end?style=for-the-badge)
 
 ## Description
 
